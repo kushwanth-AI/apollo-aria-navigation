@@ -1,0 +1,49 @@
+[
+  {
+    "floor_id": "ground-live",
+    "floorId": "ground-live",
+    "name": "Ground Floor - Live Test Map",
+    "floorName": "Ground Floor - Live Test Map",
+    "level_label": "Live Ground Floor",
+    "is_live_map": true,
+    "width": 900,
+    "height": 600,
+    "outline": { "x": 48, "y": 40, "width": 804, "height": 520 },
+    "corridors": [
+      {
+        "id": "GROUND_LIVE_MAIN_CORRIDOR",
+        "name": "Main Corridor",
+        "points": [
+          { "x": 450, "y": 70 },
+          { "x": 450, "y": 540 }
+        ]
+      },
+      {
+        "id": "GROUND_LIVE_RECEPTION_CONNECTOR",
+        "name": "Reception Connector",
+        "points": [
+          { "x": 330, "y": 270 },
+          { "x": 450, "y": 270 }
+        ]
+      },
+      {
+        "id": "GROUND_LIVE_DISCUSSION_SPINE",
+        "name": "Discussion Room Connector",
+        "points": [
+          { "x": 450, "y": 270 },
+          { "x": 600, "y": 270 }
+        ]
+      }
+    ]
+  },
+  {"floor_id":1,"name":"Floor 1 - Reception and Services","level_label":"Ground Services","width":900,"height":600,"outline":{"x":40,"y":40,"width":820,"height":520},"corridors":[{"id":"F1_MAIN_CORRIDOR","name":"Main Corridor","points":[{"x":100,"y":300},{"x":780,"y":300}]},{"id":"F1_VERTICAL_CORRIDOR","name":"Lift Connector","points":[{"x":250,"y":130},{"x":250,"y":470}]}]},
+  {"floor_id":2,"name":"Floor 2 - General Medicine","level_label":"General Medicine","width":900,"height":600,"outline":{"x":40,"y":40,"width":820,"height":520},"corridors":[{"id":"F2_MAIN_CORRIDOR","name":"Main Corridor","points":[{"x":100,"y":300},{"x":780,"y":300}]},{"id":"F2_VERTICAL_CORRIDOR","name":"Lift Connector","points":[{"x":250,"y":130},{"x":250,"y":470}]}]},
+  {"floor_id":3,"name":"Floor 3 - Dental and ENT","level_label":"Dental and ENT","width":900,"height":600,"outline":{"x":40,"y":40,"width":820,"height":520},"corridors":[{"id":"F3_MAIN_CORRIDOR","name":"Main Corridor","points":[{"x":100,"y":300},{"x":780,"y":300}]},{"id":"F3_VERTICAL_CORRIDOR","name":"Lift Connector","points":[{"x":250,"y":130},{"x":250,"y":470}]}]},
+  {"floor_id":4,"name":"Floor 4 - Pediatrics","level_label":"Pediatrics","width":900,"height":600,"outline":{"x":40,"y":40,"width":820,"height":520},"corridors":[{"id":"F4_MAIN_CORRIDOR","name":"Main Corridor","points":[{"x":100,"y":300},{"x":780,"y":300}]},{"id":"F4_VERTICAL_CORRIDOR","name":"Lift Connector","points":[{"x":250,"y":130},{"x":250,"y":470}]}]},
+  {"floor_id":5,"name":"Floor 5 - Cardiology","level_label":"Cardiology","width":900,"height":600,"outline":{"x":40,"y":40,"width":820,"height":520},"corridors":[{"id":"F5_MAIN_CORRIDOR","name":"Main Corridor","points":[{"x":100,"y":300},{"x":780,"y":300}]},{"id":"F5_VERTICAL_CORRIDOR","name":"Lift Connector","points":[{"x":250,"y":130},{"x":250,"y":470}]}]},
+  {"floor_id":6,"name":"Floor 6 - Orthopedics","level_label":"Orthopedics","width":900,"height":600,"outline":{"x":40,"y":40,"width":820,"height":520},"corridors":[{"id":"F6_MAIN_CORRIDOR","name":"Main Corridor","points":[{"x":100,"y":300},{"x":780,"y":300}]},{"id":"F6_VERTICAL_CORRIDOR","name":"Lift Connector","points":[{"x":250,"y":130},{"x":250,"y":470}]}]},
+  {"floor_id":7,"name":"Floor 7 - Neurology","level_label":"Neurology","width":900,"height":600,"outline":{"x":40,"y":40,"width":820,"height":520},"corridors":[{"id":"F7_MAIN_CORRIDOR","name":"Main Corridor","points":[{"x":100,"y":300},{"x":780,"y":300}]},{"id":"F7_VERTICAL_CORRIDOR","name":"Lift Connector","points":[{"x":250,"y":130},{"x":250,"y":470}]}]},
+  {"floor_id":8,"name":"Floor 8 - Dermatology","level_label":"Dermatology","width":900,"height":600,"outline":{"x":40,"y":40,"width":820,"height":520},"corridors":[{"id":"F8_MAIN_CORRIDOR","name":"Main Corridor","points":[{"x":100,"y":300},{"x":780,"y":300}]},{"id":"F8_VERTICAL_CORRIDOR","name":"Lift Connector","points":[{"x":250,"y":130},{"x":250,"y":470}]}]},
+  {"floor_id":9,"name":"Floor 9 - Oncology","level_label":"Oncology","width":900,"height":600,"outline":{"x":40,"y":40,"width":820,"height":520},"corridors":[{"id":"F9_MAIN_CORRIDOR","name":"Main Corridor","points":[{"x":100,"y":300},{"x":780,"y":300}]},{"id":"F9_VERTICAL_CORRIDOR","name":"Lift Connector","points":[{"x":250,"y":130},{"x":250,"y":470}]}]},
+  {"floor_id":10,"name":"Floor 10 - Administration","level_label":"Administration","width":900,"height":600,"outline":{"x":40,"y":40,"width":820,"height":520},"corridors":[{"id":"F10_MAIN_CORRIDOR","name":"Main Corridor","points":[{"x":100,"y":300},{"x":780,"y":300}]},{"id":"F10_VERTICAL_CORRIDOR","name":"Lift Connector","points":[{"x":250,"y":130},{"x":250,"y":470}]}]}
+]

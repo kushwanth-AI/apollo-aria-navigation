@@ -1,0 +1,22 @@
+[
+  {"doctor_id":"D001","name":"Dr. Neethi Menon","specialty":"Dentist","floor":3,"room_id":"F3_R305"},
+  {"doctor_id":"D002","name":"Dr. Arun Silva","specialty":"General Physician","floor":2,"room_id":"F2_R202"},
+  {"doctor_id":"D003","name":"Dr. Maya Fernando","specialty":"Pediatrician","floor":4,"room_id":"F4_R404"},
+  {"doctor_id":"D004","name":"Dr. Rohan Perera","specialty":"Cardiologist","floor":5,"room_id":"F5_R506"},
+  {"doctor_id":"D005","name":"Dr. Kavya Rao","specialty":"Orthopedic Surgeon","floor":6,"room_id":"F6_R603"},
+  {"doctor_id":"D006","name":"Dr. Sameer Khan","specialty":"Neurologist","floor":7,"room_id":"F7_R707"},
+  {"doctor_id":"D007","name":"Dr. Leela Iyer","specialty":"Dermatologist","floor":8,"room_id":"F8_R802"},
+  {"doctor_id":"D008","name":"Dr. Omar Malik","specialty":"Oncologist","floor":9,"room_id":"F9_R909"},
+  {"doctor_id":"D009","name":"Dr. Priya Nair","specialty":"ENT Specialist","floor":3,"room_id":"F3_R302"},
+  {"doctor_id":"D010","name":"Dr. Dev Raj","specialty":"Radiologist","floor":1,"room_id":"F1_R108"},
+  {"doctor_id":"D011","name":"Dr. Anika Joseph","specialty":"Endocrinologist","floor":5,"room_id":"F5_R502"},
+  {"doctor_id":"D012","name":"Dr. Hari Kumar","specialty":"Pulmonologist","floor":6,"room_id":"F6_R607"},
+  {"doctor_id":"D013","name":"Dr. Sara Wijesinghe","specialty":"Gynecologist","floor":4,"room_id":"F4_R409"},
+  {"doctor_id":"D014","name":"Dr. Vikram Das","specialty":"Urologist","floor":7,"room_id":"F7_R701"},
+  {"doctor_id":"D015","name":"Dr. Meera Shah","specialty":"Psychiatrist","floor":8,"room_id":"F8_R808"},
+  {"doctor_id":"D016","name":"Dr. Nimal Jay","specialty":"Nephrologist","floor":9,"room_id":"F9_R904"},
+  {"doctor_id":"D017","name":"Dr. Tara Bose","specialty":"Ophthalmologist","floor":2,"room_id":"F2_R209"},
+  {"doctor_id":"D018","name":"Dr. Kiran Patel","specialty":"Gastroenterologist","floor":5,"room_id":"F5_R509"},
+  {"doctor_id":"D019","name":"Dr. Ishan Thomas","specialty":"Physiotherapist","floor":6,"room_id":"F6_R610"},
+  {"doctor_id":"D020","name":"Dr. Lina George","specialty":"Hospital Administrator","floor":10,"room_id":"F10_R1004"}
+]
