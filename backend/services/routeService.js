@@ -60,7 +60,25 @@ const liveRouteSequences = {
   cafe_area: ["reception", "corridor_mid", "discussion_room_4", "cafe_area"]
 };
 
+const liveNodeLabels = {
+  reception: "Reception",
+  corridor_mid: "Main Corridor",
+  lift: "Lift Lobby",
+  stairs: "Stairs",
+  north_entrance: "North Entrance",
+  south_entrance: "South Entrance",
+  pharmacy: "Pharmacy",
+  exit: "Exit",
+  discussion_room_1: "General OPD 1",
+  discussion_room_2: "General OPD 2",
+  discussion_room_3: "Sample Collection Lab",
+  discussion_room_4: "Billing Counter",
+  discussion_room_5: "Radiology / X-Ray",
+  cafe_area: "Patient Waiting Area"
+};
+
 const titleForNode = (nodeId) =>
+  liveNodeLabels[nodeId] ||
   nodeId
     .split("_")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
@@ -79,7 +97,7 @@ const buildLiveReceptionSteps = (destination) => {
       "Start from Reception",
       "Move to main corridor",
       "Turn right",
-      "Proceed to Discussion Room 1",
+      "Proceed to General OPD 1",
       "You have arrived"
     ];
   }
@@ -90,7 +108,7 @@ const buildLiveReceptionSteps = (destination) => {
       "Move to main corridor",
       "Turn right",
       "Continue straight",
-      "Proceed to Discussion Room 2",
+      "Proceed to General OPD 2",
       "You have arrived"
     ];
   }
@@ -101,7 +119,7 @@ const buildLiveReceptionSteps = (destination) => {
       "Move to main corridor",
       "Turn right",
       "Continue straight",
-      "Proceed to Discussion Room 3",
+      "Proceed to Sample Collection Lab",
       "You have arrived"
     ];
   }
@@ -112,7 +130,7 @@ const buildLiveReceptionSteps = (destination) => {
       "Move to main corridor",
       "Move down corridor",
       "Turn right",
-      "Proceed to Discussion Room 4",
+      "Proceed to Billing Counter",
       "You have arrived"
     ];
   }
@@ -123,8 +141,8 @@ const buildLiveReceptionSteps = (destination) => {
       "Move to main corridor",
       "Move down corridor",
       "Turn right",
-      "Pass Cafe Area",
-      "Proceed to Discussion Room 5",
+      "Pass Patient Waiting Area",
+      "Proceed to Radiology / X-Ray",
       "You have arrived"
     ];
   }

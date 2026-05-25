@@ -45,6 +45,7 @@ function LiveNavigationGuide({
   const lastCameraMoveAtRef = useRef(0);
   const [cameraReady, setCameraReady] = useState(false);
   const [cameraMotionScore, setCameraMotionScore] = useState(0);
+  const [showTechnicalDetails, setShowTechnicalDetails] = useState(false);
   const direction = useMemo(() => directionForInstruction(currentInstruction), [currentInstruction]);
   const directionLabel = labelForDirection[direction];
 
@@ -149,7 +150,7 @@ function LiveNavigationGuide({
             <span>Main Corridor</span>
           </div>
           <div className="sim-wall sim-right">
-            <span>Cafe Area</span>
+            <span>Waiting Area</span>
             <span className="sim-destination-door">{destination.room_number}</span>
           </div>
           <div className="sim-floor" />
@@ -165,7 +166,7 @@ function LiveNavigationGuide({
           <span>Destination</span>
           <strong>{destination.name}</strong>
         </div>
-        <button type="button" onClick={onClearNavigation}>Clear</button>
+        <button type="button" onClick={() => setShowTechnicalDetails((visible) => !visible)}>Details</button>
       </header>
 
       <div className="ar-small-stats">
@@ -198,17 +199,19 @@ function LiveNavigationGuide({
         <small>{motionDebug?.status || "Face phone toward corridor, calibrate, then start walking."}</small>
       </div>
 
-      <div className="ar-debug-overlay">
-        <span>Steps: {motionDebug?.steps || 0}</span>
-        <span>Heading: {Math.round(motionDebug?.heading || 0)} deg</span>
-        <span>Moved: {(motionDebug?.distanceMeters || 0).toFixed(1)}m</span>
-        <span>Motion events: {motionDebug?.motionEvents || 0}</span>
-        <span>Orient events: {motionDebug?.orientationEvents || 0}</span>
-        <span>Accel: {(motionDebug?.accelerationDelta || 0).toFixed(2)}</span>
-        <span>Camera motion: {cameraMotionScore.toFixed(1)}</span>
-        <span>X/Y: {Math.round(currentLocation?.x || 0)}, {Math.round(currentLocation?.y || 0)}</span>
-        <span>{motionDebug?.isMoving ? "Walking" : "Stopped"}</span>
-      </div>
+      {showTechnicalDetails && (
+        <div className="ar-debug-overlay">
+          <span>Steps: {motionDebug?.steps || 0}</span>
+          <span>Heading: {Math.round(motionDebug?.heading || 0)} deg</span>
+          <span>Moved: {(motionDebug?.distanceMeters || 0).toFixed(1)}m</span>
+          <span>Motion events: {motionDebug?.motionEvents || 0}</span>
+          <span>Orient events: {motionDebug?.orientationEvents || 0}</span>
+          <span>Accel: {(motionDebug?.accelerationDelta || 0).toFixed(2)}</span>
+          <span>Camera motion: {cameraMotionScore.toFixed(1)}</span>
+          <span>X/Y: {Math.round(currentLocation?.x || 0)}, {Math.round(currentLocation?.y || 0)}</span>
+          <span>{motionDebug?.isMoving ? "Walking" : "Stopped"}</span>
+        </div>
+      )}
 
       {hasArrived && (
         <div className="ar-arrival-overlay">

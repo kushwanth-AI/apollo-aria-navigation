@@ -365,8 +365,58 @@ h2 {
   padding: 16px;
 }
 
+.destination-search {
+  width: 100%;
+  min-height: 42px;
+  margin-top: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #f8fbfd;
+  color: #102033;
+  padding: 10px 12px;
+  font-weight: 800;
+  outline: none;
+}
+
+.destination-search:focus {
+  border-color: #0f766e;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.12);
+}
+
 .destination-buttons {
   grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.demo-impact-strip {
+  width: min(1500px, 100%);
+  margin: 0 auto 16px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.demo-impact-strip div {
+  min-height: 74px;
+  padding: 14px;
+  border: 1px solid #d5e1ea;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 10px 24px rgba(45, 62, 80, 0.07);
+}
+
+.demo-impact-strip span {
+  display: block;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.demo-impact-strip strong {
+  display: block;
+  margin-top: 6px;
+  color: #102033;
+  font-size: 16px;
 }
 
 .fallback-floor-note {
@@ -3970,6 +4020,10 @@ h2 {
   }
 
   .destination-picker {
+    grid-template-columns: 1fr;
+  }
+
+  .demo-impact-strip {
     grid-template-columns: 1fr;
   }
 

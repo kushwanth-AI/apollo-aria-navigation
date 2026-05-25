@@ -11,11 +11,11 @@ const DEFAULT_DOCTOR_ID = "D001";
 const LIVE_FLOOR_ID = "ground-live";
 
 const LIVE_DESTINATIONS = [
-  { room_id: "discussion_room_1", name: "Discussion Room 1" },
-  { room_id: "discussion_room_2", name: "Discussion Room 2" },
-  { room_id: "discussion_room_3", name: "Discussion Room 3" },
-  { room_id: "discussion_room_4", name: "Discussion Room 4" },
-  { room_id: "discussion_room_5", name: "Discussion Room 5" },
+  { room_id: "discussion_room_1", name: "General OPD 1" },
+  { room_id: "discussion_room_2", name: "General OPD 2" },
+  { room_id: "discussion_room_3", name: "Sample Collection Lab" },
+  { room_id: "discussion_room_4", name: "Billing Counter" },
+  { room_id: "discussion_room_5", name: "Radiology / X-Ray" },
   { room_id: "pharmacy", name: "Pharmacy" },
   { room_id: "lift", name: "Lift" },
   { room_id: "stairs", name: "Stairs" },
@@ -77,6 +77,7 @@ function App() {
   const [scanPayload, setScanPayload] = useState(null);
   const [routeResult, setRouteResult] = useState(null);
   const [selectedDestination, setSelectedDestination] = useState("");
+  const [destinationQuery, setDestinationQuery] = useState("");
   const [liveTrackingEnabled, setLiveTrackingEnabled] = useState(false);
   const [currentLiveLocation, setCurrentLiveLocation] = useState(null);
   const [liveRouteProgress, setLiveRouteProgress] = useState(0);
@@ -249,6 +250,9 @@ function App() {
   const liveFloor = floors.find((floor) => String(floor.floor_id) === LIVE_FLOOR_ID);
   const hasRoute = Boolean(routeResult);
   const destinationLabel = routeResult?.destination?.name || LIVE_DESTINATIONS.find((item) => item.room_id === selectedDestination)?.name;
+  const filteredLiveDestinations = LIVE_DESTINATIONS.filter((destination) =>
+    destination.name.toLowerCase().includes(destinationQuery.trim().toLowerCase())
+  );
   const currentLocationLabel = currentLiveLocation?.label || currentLiveLocation?.name || (scanPayload ? "Reception" : "Not set");
   const remainingMeters = routeResult ? Math.max(0, Math.ceil(routeResult.distance_meters * (1 - liveRouteProgress / 100))) : 0;
   const currentInstruction = useMemo(() => {
@@ -368,7 +372,7 @@ function App() {
       <header className="topbar">
         <div>
           <p className="eyebrow">Hospital Indoor Navigation</p>
-          <h1>Ground Floor Live Wayfinding</h1>
+          <h1>OPD Floor Live Wayfinding</h1>
         </div>
         <div className="status-pill">{status}</div>
       </header>
@@ -381,8 +385,8 @@ function App() {
           <section className="initial-live-map">
             <div className="map-header">
               <div>
-                <p className="eyebrow">Default Active Map</p>
-                <h2>Ground Floor - Live Test Map</h2>
+                <p className="eyebrow">Active Hospital Map</p>
+                <h2>Ground Floor - OPD & Patient Services</h2>
               </div>
               <span className="status-pill">Reception live start</span>
             </div>
@@ -421,11 +425,18 @@ function App() {
 
           <section className="destination-picker">
             <div>
-              <p className="eyebrow">Live Test Destinations</p>
-              <h2>Choose where to navigate from Reception</h2>
+              <p className="eyebrow">Patient Destinations</p>
+              <h2>Choose a department from Reception</h2>
+              <input
+                className="destination-search"
+                type="search"
+                placeholder="Search OPD, Pharmacy, Lab..."
+                value={destinationQuery}
+                onChange={(event) => setDestinationQuery(event.target.value)}
+              />
             </div>
             <div className="destination-buttons">
-              {LIVE_DESTINATIONS.map((destination) => (
+              {filteredLiveDestinations.map((destination) => (
                 <button
                   key={destination.room_id}
                   type="button"
@@ -435,6 +446,25 @@ function App() {
                   {destination.name}
                 </button>
               ))}
+            </div>
+          </section>
+
+          <section className="demo-impact-strip">
+            <div>
+              <span>Demo Scenario</span>
+              <strong>Reception to {destinationLabel || "selected department"}</strong>
+            </div>
+            <div>
+              <span>Patient Experience</span>
+              <strong>No app install</strong>
+            </div>
+            <div>
+              <span>Staff Impact</span>
+              <strong>Fewer direction queries</strong>
+            </div>
+            <div>
+              <span>Rollout</span>
+              <strong>QR-first, BLE-ready</strong>
             </div>
           </section>
 
@@ -483,7 +513,7 @@ function App() {
                 <div className="map-panel">
                   <div className="map-header">
                     <div>
-                      <p className="eyebrow">{String(selectedFloor) === LIVE_FLOOR_ID ? "Primary Real Map" : "Fallback Sample Floor"}</p>
+                      <p className="eyebrow">{String(selectedFloor) === LIVE_FLOOR_ID ? "Hospital Floor Map" : "Sample Floor Map"}</p>
                       <h2>{currentFloorName}</h2>
                     </div>
                     <div className="map-tools">
@@ -510,7 +540,7 @@ function App() {
                       <button type="button" className="tool-active">
                         Floor Map
                       </button>
-                      <span>{String(selectedFloor) === LIVE_FLOOR_ID ? "Ground Live" : `F${selectedFloor}`}</span>
+                      <span>{String(selectedFloor) === LIVE_FLOOR_ID ? "Ground OPD" : `F${selectedFloor}`}</span>
                     </div>
                   </div>
                   <NavigationMap

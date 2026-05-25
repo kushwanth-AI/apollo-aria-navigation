@@ -5,8 +5,8 @@ function DoctorDestinationCard({ doctor, destination, scanPayload, currentLiveLo
     return (
       <aside className="doctor-card">
         <div>
-          <p className="eyebrow">Live Demo</p>
-          <h2>Ground Floor Navigation</h2>
+          <p className="eyebrow">Patient Journey</p>
+          <h2>OPD Floor Navigation</h2>
           <span className="specialty">Reception QR Active</span>
         </div>
 

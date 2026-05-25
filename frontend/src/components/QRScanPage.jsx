@@ -140,10 +140,10 @@ function QRScanPage({ onScan, onNavigate }) {
     <section className="scan-page">
       <div className="scan-card">
         <div>
-          <p className="eyebrow">Ground Floor Live Test</p>
+          <p className="eyebrow">Hospital Entrance QR</p>
           <h2>Scan the Reception QR code</h2>
           <p className="muted">
-            The app uses the mobile back camera when available. If permission fails, use the manual buttons below.
+            Start the patient journey from Reception, then choose a department such as Pharmacy, OPD, Lab, Billing, or Radiology.
           </p>
         </div>
 
@@ -154,7 +154,7 @@ function QRScanPage({ onScan, onNavigate }) {
             <div className="scanner-placeholder">
               <div className="scanner-frame" />
               <strong>Back Camera QR Scanner</strong>
-              <span>Start scanner, allow camera access, then scan QR_RECEPTION_GROUND.</span>
+              <span>Start scanner, allow camera access, then scan the Reception QR.</span>
             </div>
           )}
         </div>
@@ -195,7 +195,7 @@ function QRScanPage({ onScan, onNavigate }) {
               type="button"
               onClick={() => onNavigate(`discussion_room_${roomNumber}`)}
             >
-              Navigate to Discussion Room {roomNumber}
+              {["General OPD 1", "General OPD 2", "Sample Collection Lab", "Billing Counter", "Radiology / X-Ray"][roomNumber - 1]}
             </button>
           ))}
         </div>
@@ -204,9 +204,9 @@ function QRScanPage({ onScan, onNavigate }) {
       <aside className="demo-payload">
         <p className="eyebrow">Reception QR Code</p>
         <div className="qr-display-card">
-          {qrImage && <img src={qrImage} alt="Reception QR code for Ground Floor Live Map" />}
+          {qrImage && <img src={qrImage} alt="Reception QR code for OPD floor navigation" />}
           <strong>QR_RECEPTION_GROUND</strong>
-          <span>Current location becomes Reception on Ground Floor - Live Test Map.</span>
+          <span>Current location becomes Reception on the OPD floor map.</span>
           {qrImage && (
             <a href={qrImage} download="ground-floor-reception-qr.png">
               Download QR Code

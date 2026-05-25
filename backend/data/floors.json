@@ -2,9 +2,9 @@
   {
     "floor_id": "ground-live",
     "floorId": "ground-live",
-    "name": "Ground Floor - Live Test Map",
-    "floorName": "Ground Floor - Live Test Map",
-    "level_label": "Live Ground Floor",
+    "name": "Ground Floor - OPD & Patient Services",
+    "floorName": "Ground Floor - OPD & Patient Services",
+    "level_label": "OPD Reception Floor",
     "is_live_map": true,
     "width": 900,
     "height": 600,
@@ -28,7 +28,7 @@
       },
       {
         "id": "GROUND_LIVE_DISCUSSION_SPINE",
-        "name": "Discussion Room Connector",
+        "name": "OPD Services Connector",
         "points": [
           { "x": 450, "y": 270 },
           { "x": 600, "y": 270 }

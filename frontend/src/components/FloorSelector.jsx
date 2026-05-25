@@ -3,7 +3,7 @@ function FloorSelector({ floors, selectedFloor, onChange, currentFloor, destinat
     <section className="floor-selector">
       <div>
         <p className="eyebrow">Floor View</p>
-        <h2>{String(currentFloor) === "ground-live" ? "Ground Floor Live Map" : `Current Floor ${currentFloor} to Destination Floor ${destinationFloor}`}</h2>
+        <h2>{String(currentFloor) === "ground-live" ? "Ground Floor OPD Map" : `Current Floor ${currentFloor} to Destination Floor ${destinationFloor}`}</h2>
       </div>
       <div className="floor-buttons" role="tablist" aria-label="Hospital floors">
         {floors.map((floor) => {

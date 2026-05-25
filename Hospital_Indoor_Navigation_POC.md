@@ -50,6 +50,24 @@ This document outlines a **two-phase Indoor Navigation solution** designed to so
 
 - **Immediate Priority:** Validate the QR-based approach with management and staff before investing in hardware.
 
+### Management Demo Storyline
+
+For the live POC demonstration, the recommended flow is:
+
+```
+Reception QR scan
+        ↓
+Select destination: Pharmacy / OPD / Lab / Billing / Radiology
+        ↓
+Animated route appears on the OPD floor map
+        ↓
+Patient follows the live guide with distance and next instruction
+        ↓
+Arrival confirmation appears at the destination
+```
+
+This gives leadership a realistic patient journey in under one minute: no app install, clear visual guidance, and an obvious path from QR-based navigation to future BLE-based indoor GPS.
+
 ---
 
 ## 2. Phase 1 — QR Smart Indoor Navigation (Current POC)
