@@ -2,36 +2,65 @@
   {
     "floor_id": "ground-live",
     "floorId": "ground-live",
-    "name": "Ground Floor - OPD & Patient Services",
-    "floorName": "Ground Floor - OPD & Patient Services",
-    "level_label": "OPD Reception Floor",
+    "name": "Apollo Ground Floor - AHLL IT Navigation",
+    "floorName": "Apollo Ground Floor - AHLL IT Navigation",
+    "level_label": "Apollo Ground Floor",
     "is_live_map": true,
     "width": 900,
     "height": 600,
-    "outline": { "x": 48, "y": 40, "width": 804, "height": 520 },
+    "outline": { "x": 40, "y": 35, "width": 820, "height": 550 },
     "corridors": [
       {
-        "id": "GROUND_LIVE_MAIN_CORRIDOR",
-        "name": "Main Corridor",
+        "id": "GROUND_LIVE_RIGHT_CORRIDOR",
+        "name": "Main Vertical Corridor",
         "points": [
-          { "x": 450, "y": 70 },
-          { "x": 450, "y": 540 }
+          { "x": 650, "y": 90 },
+          { "x": 650, "y": 540 }
         ]
       },
       {
-        "id": "GROUND_LIVE_RECEPTION_CONNECTOR",
-        "name": "Reception Connector",
+        "id": "GROUND_LIVE_BOTTOM_CORRIDOR",
+        "name": "Entrance Corridor",
         "points": [
-          { "x": 330, "y": 270 },
-          { "x": 450, "y": 270 }
+          { "x": 130, "y": 520 },
+          { "x": 650, "y": 520 }
         ]
       },
       {
-        "id": "GROUND_LIVE_DISCUSSION_SPINE",
-        "name": "OPD Services Connector",
+        "id": "GROUND_LIVE_LEFT_CORRIDOR",
+        "name": "Apollo Block Corridor",
         "points": [
-          { "x": 450, "y": 270 },
-          { "x": 600, "y": 270 }
+          { "x": 130, "y": 90 },
+          { "x": 130, "y": 520 }
+        ]
+      },
+      {
+        "id": "GROUND_LIVE_TOP_CORRIDOR",
+        "name": "Toilet and Food Court Corridor",
+        "points": [
+          { "x": 90, "y": 90 },
+          { "x": 650, "y": 90 },
+          { "x": 720, "y": 115 }
+        ]
+      },
+      {
+        "id": "GROUND_LIVE_DISCUSSION_CORRIDOR",
+        "name": "Discussion Room Corridor",
+        "points": [
+          { "x": 130, "y": 250 },
+          { "x": 650, "y": 250 }
+        ]
+      },
+      {
+        "id": "GROUND_LIVE_TEAM_CONNECTORS",
+        "name": "Team Area Access",
+        "points": [
+          { "x": 650, "y": 320 },
+          { "x": 600, "y": 320 },
+          { "x": 650, "y": 400 },
+          { "x": 600, "y": 400 },
+          { "x": 650, "y": 480 },
+          { "x": 600, "y": 480 }
         ]
       }
     ]

@@ -4,17 +4,17 @@ import QRCode from "qrcode";
 
 const RECEPTION_QR = {
   floor: "ground-live",
-  location_id: "QR_RECEPTION_GROUND",
-  currentLocation: "reception",
+  location_id: "QR_AHLL_IT",
+  currentLocation: "ahll_it_department",
   currentFloor: "ground-live"
 };
 
 const SUPPORTED_QR_VALUES = [
   "QR_RECEPTION_GROUND",
-  "QR_NORTH_ENTRANCE",
-  "QR_SOUTH_ENTRANCE",
-  "QR_LIFT_GROUND",
-  "QR_STAIRS_GROUND"
+  "QR_RECEPTION_BLOCK",
+  "QR_AHLL_IT",
+  "QR_FOOD_COURT",
+  "QR_CAFE_AREA"
 ];
 
 function QRScanPage({ onScan, onNavigate }) {
@@ -23,7 +23,7 @@ function QRScanPage({ onScan, onNavigate }) {
   const fileInputRef = useRef(null);
   const [cameraEnabled, setCameraEnabled] = useState(true);
   const [scanError, setScanError] = useState("");
-  const [scanStatus, setScanStatus] = useState("Ready to scan Reception QR");
+  const [scanStatus, setScanStatus] = useState("Ready to scan AHLL IT QR");
   const [qrImage, setQrImage] = useState("");
 
   const normalizeQrPayload = (decodedText) => {
@@ -49,7 +49,7 @@ function QRScanPage({ onScan, onNavigate }) {
       await scannerRef.current?.clear();
       onScan(payload);
     } catch (err) {
-      setScanError("Invalid QR. Use QR_RECEPTION_GROUND or another supported ground-floor live QR.");
+      setScanError("Invalid QR. Use QR_RECEPTION_GROUND or another supported Apollo ground-floor QR.");
       setScanStatus("Scanner active. Try another QR code.");
     }
   };
@@ -86,7 +86,7 @@ function QRScanPage({ onScan, onNavigate }) {
 
   const simulateReception = () => {
     setScanError("");
-    setScanStatus("Simulated Reception QR");
+    setScanStatus("Simulated AHLL IT QR");
     onScan(RECEPTION_QR);
   };
 
@@ -139,87 +139,110 @@ function QRScanPage({ onScan, onNavigate }) {
   return (
     <section className="scan-page">
       <div className="scan-card">
-        <div>
-          <p className="eyebrow">Hospital Entrance QR</p>
-          <h2>Scan the Reception QR code</h2>
-          <p className="muted">
-            Start the patient journey from Reception, then choose a department such as Pharmacy, OPD, Lab, Billing, or Radiology.
-          </p>
+        <div className="scan-card-header">
+          <div>
+            <p className="eyebrow">Step 1</p>
+            <h2>Scan your current location</h2>
+            <p className="muted">
+              Point the camera at the hospital QR code. After the scan, choose where you want to go.
+            </p>
+          </div>
+          <span className="scan-step-pill">QR required</span>
         </div>
 
-        <div className="scanner-box">
-          {cameraEnabled ? (
-            <div id="qr-reader" />
-          ) : (
-            <div className="scanner-placeholder">
-              <div className="scanner-frame" />
-              <strong>Back Camera QR Scanner</strong>
-              <span>Start scanner, allow camera access, then scan the Reception QR.</span>
+        <div className="scanner-panel">
+          <div className="scanner-box">
+            {cameraEnabled ? (
+              <div id="qr-reader" />
+            ) : (
+              <div className="scanner-placeholder">
+                <div className="scanner-frame" />
+                <strong>Back Camera QR Scanner</strong>
+                <span>Start scanner, allow camera access, then scan the AHLL IT QR.</span>
+              </div>
+            )}
+          </div>
+
+          <div className="scan-control-panel">
+            <div>
+              <p className="eyebrow">Scanner Status</p>
+              <div className="scan-status">{scanStatus}</div>
+              {scanError && <div className="inline-error scan-error-inline">{scanError}</div>}
             </div>
-          )}
-        </div>
 
-        <div className="scan-status">{scanStatus}</div>
-        {scanError && <div className="inline-error">{scanError}</div>}
-
-        <div className="scan-actions">
-          {!cameraEnabled ? (
-            <button className="primary-btn" type="button" onClick={() => setCameraEnabled(true)}>
-              Start QR Scanner
-            </button>
-          ) : (
-            <button className="secondary-btn" type="button" onClick={stopScanner}>
-              Stop Scanner
-            </button>
-          )}
-          <button className="primary-btn" type="button" onClick={simulateReception}>
-            Simulate Reception QR
-          </button>
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept="image/*"
-            className="qr-upload-input"
-            onChange={handleQrUpload}
-          />
-          <button className="secondary-btn" type="button" onClick={() => fileInputRef.current?.click()}>
-            Upload QR Image
-          </button>
+            <div className="scan-actions">
+              {!cameraEnabled ? (
+                <button className="primary-btn" type="button" onClick={() => setCameraEnabled(true)}>
+                  Start Scanner
+                </button>
+              ) : (
+                <button className="secondary-btn" type="button" onClick={stopScanner}>
+                  Stop Scanner
+                </button>
+              )}
+              <button className="secondary-btn" type="button" onClick={() => fileInputRef.current?.click()}>
+                Upload QR Image
+              </button>
+              <button className="secondary-btn" type="button" onClick={simulateReception}>
+                Simulate AHLL IT QR
+              </button>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                className="qr-upload-input"
+                onChange={handleQrUpload}
+              />
+            </div>
+          </div>
         </div>
         <div id="qr-upload-reader" className="qr-upload-reader" />
 
-        <div className="manual-test-grid">
-          {[1, 2, 3, 4, 5].map((roomNumber) => (
-            <button
-              key={roomNumber}
-              type="button"
-              onClick={() => onNavigate(`discussion_room_${roomNumber}`)}
-            >
-              {["General OPD 1", "General OPD 2", "Sample Collection Lab", "Billing Counter", "Radiology / X-Ray"][roomNumber - 1]}
-            </button>
-          ))}
-        </div>
+        <details className="demo-shortcuts">
+          <summary>Demo destination shortcuts</summary>
+          <div className="manual-test-grid">
+            {[
+              ["ahll_it_department", "AHLL IT Department"],
+              ["qa_team", "QA Team"],
+              ["apollo_rd_team", "Apollo R&D Team"],
+              ["discussion_room_1", "Discussion Room 1"],
+              ["discussion_room_4", "Discussion Room 4"],
+              ["cafe_area", "Cafe Area"],
+              ["food_court", "Food Court"],
+              ["exit", "Main Exit"]
+            ].map(([roomId, label]) => (
+              <button
+                key={roomId}
+                type="button"
+                onClick={() => onNavigate(roomId)}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </details>
       </div>
 
       <aside className="demo-payload">
-        <p className="eyebrow">Reception QR Code</p>
+        <p className="eyebrow">Download Test QR</p>
         <div className="qr-display-card">
-          {qrImage && <img src={qrImage} alt="Reception QR code for OPD floor navigation" />}
-          <strong>QR_RECEPTION_GROUND</strong>
-          <span>Current location becomes Reception on the OPD floor map.</span>
+          {qrImage && <img src={qrImage} alt="AHLL IT QR code for Apollo ground floor navigation" />}
+          <div>
+            <strong>AHLL IT Department</strong>
+            <span>Use this QR to start the ground-floor patient navigation demo.</span>
+          </div>
           {qrImage && (
-            <a href={qrImage} download="ground-floor-reception-qr.png">
+            <a href={qrImage} download="apollo-ground-floor-ahll-it-qr.png">
               Download QR Code
             </a>
           )}
         </div>
-        <p className="eyebrow qr-payload-title">Supported QR Values</p>
+        <p className="eyebrow qr-payload-title">Supported QR checkpoints</p>
         <div className="qr-help">
           {SUPPORTED_QR_VALUES.map((value) => (
             <span key={value}>{value}</span>
           ))}
         </div>
-        <pre>{JSON.stringify(RECEPTION_QR, null, 2)}</pre>
       </aside>
     </section>
   );

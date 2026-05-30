@@ -5,8 +5,7 @@ const browserApiBaseUrl = () => {
     return "http://localhost:5001/api";
   }
 
-  const { protocol, hostname } = window.location;
-  return `${protocol}//${hostname}:5001/api`;
+  return "/api";
 };
 
 const api = axios.create({
@@ -37,6 +36,17 @@ export const getRoute = async ({ current_location_id, destination_room_id }) => 
   const response = await api.post("/navigation/route", {
     current_location_id,
     destination_room_id
+  });
+  return response.data;
+};
+
+export const detectVisionFrame = async ({ image, expectedLabels, currentRouteStep, finalDestination, mockLabel }) => {
+  const response = await api.post("/vision/detect", {
+    image,
+    expectedLabels,
+    currentRouteStep,
+    finalDestination,
+    mockLabel
   });
   return response.data;
 };

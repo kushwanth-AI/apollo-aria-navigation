@@ -1,13 +1,13 @@
-function DoctorDestinationCard({ doctor, destination, scanPayload, currentLiveLocation, liveDestinations, selectedDestination, onNavigate, routeResult }) {
+function DoctorDestinationCard({ doctor, destination, scanPayload, currentLiveLocation, routeResult }) {
   if (scanPayload?.floor === "ground-live") {
-    const currentLocationLabel = currentLiveLocation?.label || currentLiveLocation?.name || "Reception";
+    const currentLocationLabel = currentLiveLocation?.label || currentLiveLocation?.name || "AHLL IT Department";
 
     return (
       <aside className="doctor-card">
         <div>
           <p className="eyebrow">Patient Journey</p>
           <h2>OPD Floor Navigation</h2>
-          <span className="specialty">Reception QR Active</span>
+          <span className="specialty">AHLL IT QR Active</span>
         </div>
 
         <div className="destination-room">
@@ -34,19 +34,6 @@ function DoctorDestinationCard({ doctor, destination, scanPayload, currentLiveLo
             </div>
           </div>
         )}
-
-        <div className="compact-destination-list">
-          {liveDestinations.map((item) => (
-            <button
-              key={item.room_id}
-              type="button"
-              className={selectedDestination === item.room_id ? "selected" : ""}
-              onClick={() => onNavigate(item.room_id)}
-            >
-              {item.name}
-            </button>
-          ))}
-        </div>
       </aside>
     );
   }

@@ -28,53 +28,128 @@ const toRoutePoint = (point) => ({
 const LIVE_FLOOR_ID = "ground-live";
 
 const liveNodes = {
-  reception: { floor: LIVE_FLOOR_ID, x: 330, y: 270 },
-  corridor_mid: { floor: LIVE_FLOOR_ID, x: 450, y: 270 },
-  lift: { floor: LIVE_FLOOR_ID, x: 450, y: 230 },
-  stairs: { floor: LIVE_FLOOR_ID, x: 450, y: 310 },
-  north_entrance: { floor: LIVE_FLOOR_ID, x: 450, y: 70 },
-  south_entrance: { floor: LIVE_FLOOR_ID, x: 450, y: 540 },
-  pharmacy: { floor: LIVE_FLOOR_ID, x: 330, y: 410 },
-  exit: { floor: LIVE_FLOOR_ID, x: 315, y: 520 },
-  discussion_room_1: { floor: LIVE_FLOOR_ID, x: 600, y: 130 },
-  discussion_room_2: { floor: LIVE_FLOOR_ID, x: 600, y: 235 },
-  discussion_room_3: { floor: LIVE_FLOOR_ID, x: 600, y: 350 },
-  discussion_room_4: { floor: LIVE_FLOOR_ID, x: 600, y: 445 },
-  discussion_room_5: { floor: LIVE_FLOOR_ID, x: 600, y: 535 },
-  cafe_area: { floor: LIVE_FLOOR_ID, x: 600, y: 490 }
+  main_entrance: { floor: LIVE_FLOOR_ID, x: 650, y: 540 },
+  bottom_junction: { floor: LIVE_FLOOR_ID, x: 650, y: 520 },
+  bottom_west: { floor: LIVE_FLOOR_ID, x: 130, y: 520 },
+  left_mid: { floor: LIVE_FLOOR_ID, x: 130, y: 250 },
+  left_top: { floor: LIVE_FLOOR_ID, x: 130, y: 90 },
+  right_mid: { floor: LIVE_FLOOR_ID, x: 650, y: 250 },
+  right_top: { floor: LIVE_FLOOR_ID, x: 650, y: 90 },
+  rd_access: { floor: LIVE_FLOOR_ID, x: 650, y: 320 },
+  it_access: { floor: LIVE_FLOOR_ID, x: 650, y: 400 },
+  qa_access: { floor: LIVE_FLOOR_ID, x: 650, y: 480 },
+  reception: { floor: LIVE_FLOOR_ID, x: 240, y: 520 },
+  reception_room_1: { floor: LIVE_FLOOR_ID, x: 355, y: 520 },
+  reception_room_2: { floor: LIVE_FLOOR_ID, x: 475, y: 520 },
+  exit: { floor: LIVE_FLOOR_ID, x: 650, y: 520 },
+  cafe_area: { floor: LIVE_FLOOR_ID, x: 650, y: 465 },
+  food_court: { floor: LIVE_FLOOR_ID, x: 720, y: 115 },
+  toilet_1: { floor: LIVE_FLOOR_ID, x: 100, y: 90 },
+  toilet_2: { floor: LIVE_FLOOR_ID, x: 185, y: 90 },
+  toilet_3: { floor: LIVE_FLOOR_ID, x: 270, y: 90 },
+  toilet_4: { floor: LIVE_FLOOR_ID, x: 360, y: 90 },
+  discussion_room_1: { floor: LIVE_FLOOR_ID, x: 205, y: 250 },
+  discussion_room_2: { floor: LIVE_FLOOR_ID, x: 355, y: 250 },
+  discussion_room_3: { floor: LIVE_FLOOR_ID, x: 510, y: 250 },
+  discussion_room_4: { floor: LIVE_FLOOR_ID, x: 650, y: 205 },
+  discussion_room_5: { floor: LIVE_FLOOR_ID, x: 650, y: 265 },
+  discussion_room_6: { floor: LIVE_FLOOR_ID, x: 650, y: 330 },
+  discussion_room_7: { floor: LIVE_FLOOR_ID, x: 650, y: 395 },
+  discussion_room_8: { floor: LIVE_FLOOR_ID, x: 650, y: 520 },
+  discussion_room_9: { floor: LIVE_FLOOR_ID, x: 650, y: 565 },
+  apollo_rd_team: { floor: LIVE_FLOOR_ID, x: 600, y: 320 },
+  ahll_it_department: { floor: LIVE_FLOOR_ID, x: 600, y: 400 },
+  qa_team: { floor: LIVE_FLOOR_ID, x: 600, y: 480 }
 };
 
 const liveRouteSequences = {
-  reception: ["reception"],
-  pharmacy: ["reception", "pharmacy"],
-  lift: ["reception", "corridor_mid", "lift"],
-  stairs: ["reception", "corridor_mid", "stairs"],
-  north_entrance: ["reception", "corridor_mid", "north_entrance"],
-  south_entrance: ["reception", "corridor_mid", "south_entrance"],
-  exit: ["reception", "pharmacy", "exit"],
-  discussion_room_1: ["reception", "corridor_mid", "discussion_room_1"],
-  discussion_room_2: ["reception", "corridor_mid", "discussion_room_2"],
-  discussion_room_3: ["reception", "corridor_mid", "discussion_room_3"],
-  discussion_room_4: ["reception", "corridor_mid", "discussion_room_4"],
-  discussion_room_5: ["reception", "corridor_mid", "discussion_room_5"],
-  cafe_area: ["reception", "corridor_mid", "discussion_room_4", "cafe_area"]
+  main_entrance: ["main_entrance"],
+  ahll_it_department: ["main_entrance", "bottom_junction", "qa_access", "it_access", "ahll_it_department"],
+  qa_team: ["main_entrance", "bottom_junction", "qa_access", "qa_team"],
+  apollo_rd_team: ["main_entrance", "bottom_junction", "qa_access", "it_access", "rd_access", "apollo_rd_team"],
+  discussion_room_1: ["main_entrance", "bottom_junction", "bottom_west", "left_mid", "discussion_room_1"],
+  discussion_room_2: ["main_entrance", "bottom_junction", "right_mid", "discussion_room_2"],
+  discussion_room_3: ["main_entrance", "bottom_junction", "right_mid", "discussion_room_3"],
+  discussion_room_4: ["main_entrance", "bottom_junction", "right_mid", "discussion_room_4"],
+  discussion_room_5: ["main_entrance", "bottom_junction", "right_mid", "discussion_room_5"],
+  discussion_room_6: ["main_entrance", "bottom_junction", "rd_access", "discussion_room_6"],
+  discussion_room_7: ["main_entrance", "bottom_junction", "it_access", "discussion_room_7"],
+  discussion_room_8: ["main_entrance", "bottom_junction", "discussion_room_8"],
+  discussion_room_9: ["main_entrance", "discussion_room_9"],
+  cafe_area: ["main_entrance", "bottom_junction", "cafe_area"],
+  food_court: ["main_entrance", "bottom_junction", "right_mid", "right_top", "food_court"],
+  exit: ["main_entrance", "bottom_junction", "exit"],
+  reception: ["main_entrance", "bottom_junction", "reception"]
+};
+
+const liveEdges = {
+  main_entrance: ["bottom_junction", "discussion_room_9"],
+  bottom_junction: ["main_entrance", "bottom_west", "right_mid", "qa_access", "cafe_area", "exit", "discussion_room_8"],
+  bottom_west: ["bottom_junction", "left_mid", "reception", "reception_room_1", "reception_room_2"],
+  left_mid: ["bottom_west", "left_top", "discussion_room_1", "discussion_room_2", "discussion_room_3", "right_mid"],
+  left_top: ["left_mid", "right_top", "toilet_1", "toilet_2", "toilet_3", "toilet_4"],
+  right_top: ["left_top", "right_mid", "food_court"],
+  right_mid: ["right_top", "bottom_junction", "left_mid", "rd_access", "discussion_room_4", "discussion_room_5"],
+  rd_access: ["right_mid", "it_access", "apollo_rd_team", "discussion_room_6"],
+  it_access: ["rd_access", "qa_access", "ahll_it_department", "discussion_room_7"],
+  qa_access: ["it_access", "bottom_junction", "qa_team"],
+  reception: ["bottom_west"],
+  reception_room_1: ["bottom_west"],
+  reception_room_2: ["bottom_west"],
+  exit: ["bottom_junction"],
+  cafe_area: ["bottom_junction"],
+  food_court: ["right_top"],
+  toilet_1: ["left_top"],
+  toilet_2: ["left_top"],
+  toilet_3: ["left_top"],
+  toilet_4: ["left_top"],
+  discussion_room_1: ["left_mid"],
+  discussion_room_2: ["left_mid"],
+  discussion_room_3: ["left_mid"],
+  discussion_room_4: ["right_mid"],
+  discussion_room_5: ["right_mid"],
+  discussion_room_6: ["rd_access"],
+  discussion_room_7: ["it_access"],
+  discussion_room_8: ["bottom_junction"],
+  discussion_room_9: ["main_entrance"],
+  apollo_rd_team: ["rd_access"],
+  ahll_it_department: ["it_access"],
+  qa_team: ["qa_access"]
 };
 
 const liveNodeLabels = {
-  reception: "Reception",
-  corridor_mid: "Main Corridor",
-  lift: "Lift Lobby",
-  stairs: "Stairs",
-  north_entrance: "North Entrance",
-  south_entrance: "South Entrance",
-  pharmacy: "Pharmacy",
-  exit: "Exit",
-  discussion_room_1: "General OPD 1",
-  discussion_room_2: "General OPD 2",
-  discussion_room_3: "Sample Collection Lab",
-  discussion_room_4: "Billing Counter",
-  discussion_room_5: "Radiology / X-Ray",
-  cafe_area: "Patient Waiting Area"
+  main_entrance: "Main Entrance",
+  bottom_junction: "Entrance Corridor",
+  bottom_west: "Reception Corridor",
+  left_mid: "Left Apollo Corridor",
+  left_top: "Toilet Corridor",
+  right_mid: "Main Vertical Corridor",
+  right_top: "Food Court Junction",
+  rd_access: "R&D Access",
+  it_access: "AHLL IT Access",
+  qa_access: "QA Access",
+  reception: "Reception Block",
+  reception_room_1: "Reception Room 1",
+  reception_room_2: "Reception Room 2",
+  exit: "Main Exit",
+  cafe_area: "Cafe Area",
+  food_court: "Food Court",
+  toilet_1: "Toilet 1",
+  toilet_2: "Toilet 2",
+  toilet_3: "Toilet 3",
+  toilet_4: "Toilet 4",
+  discussion_room_1: "Discussion Room 1",
+  discussion_room_2: "Discussion Room 2",
+  discussion_room_3: "Discussion Room 3",
+  discussion_room_4: "Discussion Room 4",
+  discussion_room_5: "Discussion Room 5",
+  discussion_room_6: "Discussion Room 6",
+  discussion_room_7: "Discussion Room 7",
+  discussion_room_8: "Discussion Room 8",
+  discussion_room_9: "Discussion Room 9",
+  apollo_rd_team: "Apollo R&D Team",
+  ahll_it_department: "AHLL IT Department",
+  qa_team: "QA Team"
 };
 
 const titleForNode = (nodeId) =>
@@ -91,84 +166,71 @@ const routeDistanceMeters = (route) =>
     return total + pixels * 0.18;
   }, 0));
 
+const findLiveRouteSequence = (startNode, destinationNode) => {
+  if (startNode === "main_entrance" && liveRouteSequences[destinationNode]) {
+    return liveRouteSequences[destinationNode];
+  }
+
+  const queue = [[startNode]];
+  const visited = new Set([startNode]);
+
+  while (queue.length) {
+    const path = queue.shift();
+    const node = path[path.length - 1];
+
+    if (node === destinationNode) {
+      return path;
+    }
+
+    (liveEdges[node] || []).forEach((nextNode) => {
+      if (!visited.has(nextNode)) {
+        visited.add(nextNode);
+        queue.push([...path, nextNode]);
+      }
+    });
+  }
+
+  return null;
+};
+
 const buildLiveReceptionSteps = (destination) => {
-  if (destination.room_id === "discussion_room_1") {
-    return [
-      "Start from Reception",
-      "Move to main corridor",
-      "Turn right",
-      "Proceed to General OPD 1",
-      "You have arrived"
-    ];
+  const upperDestinations = [
+    "toilet_1",
+    "toilet_2",
+    "toilet_3",
+    "toilet_4",
+    "food_court",
+    "discussion_room_1",
+    "discussion_room_2",
+    "discussion_room_3",
+    "discussion_room_4",
+    "discussion_room_5"
+  ];
+  const centerDestinations = ["apollo_rd_team", "ahll_it_department", "qa_team", "discussion_room_6", "discussion_room_7"];
+
+  if (destination.room_id === "cafe_area" || destination.room_id === "exit") {
+    return ["Start from Main Entrance", "Move straight along the entrance corridor", `Proceed to ${destination.name}`, "You have arrived"];
   }
 
-  if (destination.room_id === "discussion_room_2") {
-    return [
-      "Start from Reception",
-      "Move to main corridor",
-      "Turn right",
-      "Continue straight",
-      "Proceed to General OPD 2",
-      "You have arrived"
-    ];
+  if (upperDestinations.includes(destination.room_id)) {
+    return ["Start from Main Entrance", "Follow the main vertical corridor", "Continue toward the upper corridor", `Proceed to ${destination.name}`, "You have arrived"];
   }
 
-  if (destination.room_id === "discussion_room_3") {
-    return [
-      "Start from Reception",
-      "Move to main corridor",
-      "Turn right",
-      "Continue straight",
-      "Proceed to Sample Collection Lab",
-      "You have arrived"
-    ];
+  if (centerDestinations.includes(destination.room_id)) {
+    return ["Start from Main Entrance", "Move along the main vertical corridor", "Turn left at the team access point", `Proceed to ${destination.name}`, "You have arrived"];
   }
 
-  if (destination.room_id === "discussion_room_4") {
-    return [
-      "Start from Reception",
-      "Move to main corridor",
-      "Move down corridor",
-      "Turn right",
-      "Proceed to Billing Counter",
-      "You have arrived"
-    ];
+  if (destination.room_id === "reception" || destination.room_id.startsWith("reception_room")) {
+    return ["Start from Main Entrance", "Walk left through the bottom corridor", `Proceed to ${destination.name}`, "You have arrived"];
   }
 
-  if (destination.room_id === "discussion_room_5") {
-    return [
-      "Start from Reception",
-      "Move to main corridor",
-      "Move down corridor",
-      "Turn right",
-      "Pass Patient Waiting Area",
-      "Proceed to Radiology / X-Ray",
-      "You have arrived"
-    ];
-  }
-
-  if (destination.room_id === "pharmacy") {
-    return ["Start from Reception", "Move down to Pharmacy", "You have arrived"];
-  }
-
-  if (destination.room_id === "lift") {
-    return ["Start from Reception", "Move to main corridor", "Proceed to Lift", "You have arrived"];
-  }
-
-  if (destination.room_id === "stairs") {
-    return ["Start from Reception", "Move to main corridor", "Proceed to Stairs", "You have arrived"];
-  }
-
-  return ["Start from Reception", `Proceed to ${destination.name}`, "You have arrived"];
+  return ["Start from Main Entrance", `Proceed to ${destination.name}`, "You have arrived"];
 };
 
 const buildLiveRoute = ({ currentLocation, destination, currentFloorMeta }) => {
-  const currentNode = currentLocation.node_id || "reception";
+  const currentNode = currentLocation.node_id || "main_entrance";
   const destinationNode = destination.room_id;
-  const nodeSequence =
-    currentNode === "reception"
-      ? liveRouteSequences[destinationNode]
-      : [currentNode, "corridor_mid", destinationNode];
+  const nodeSequence = findLiveRouteSequence(currentNode, destinationNode);
 
   if (!nodeSequence || !nodeSequence.every((nodeId) => liveNodes[nodeId])) {
     throw Object.assign(new Error("Live ground floor route is not available for this destination"), { status: 404 });
@@ -186,7 +248,7 @@ const buildLiveRoute = ({ currentLocation, destination, currentFloorMeta }) => {
     destination,
     current_floor: currentFloorMeta,
     destination_floor: currentFloorMeta,
-    steps: currentNode === "reception" ? buildLiveReceptionSteps(destination) : [
+    steps: currentNode === "main_entrance" ? buildLiveReceptionSteps(destination) : [
       `Start from ${currentLocation.name}`,
       "Move to main corridor",
       `Proceed to ${destination.name}`,

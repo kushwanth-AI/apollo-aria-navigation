@@ -1,6 +1,7 @@
-node_modules
-dist
-.env
-.vscode
-.DS_Store
-*.log
+*.tar
+*.zip
+.edge-debug/
+node_modules/
+dist/
+frontend/dist/
+backend/dist/
